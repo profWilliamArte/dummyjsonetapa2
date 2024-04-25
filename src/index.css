@@ -1,3 +1,4 @@
+
 .card{
   transition: 0.6s; 
   box-shadow: 2px 2px 4px #2c2b2b;
@@ -10,4 +11,12 @@
 .card-header img{
   object-fit: cover;
   height: 350px; /* Ajusta el valor de altura deseado */
+}
+.imgCarrito{
+  object-fit: cover;
+  height: 40px; /* Ajusta el valor de altura deseado */ 
+  width: 60px; /* Ajusta el valor de altura deseado */ 
+}
+.tablaCarrito{
+  font-size: 12px;
 }

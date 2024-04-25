@@ -1,11 +1,23 @@
 
-import { useState } from "react";
+import {  useEffect, useState } from "react";
 import Detalle from "./Detalle";
-const Card = ({producto}) => {
+
+
+
+
+
+
+import Swal from 'sweetalert2'
+const Card = ({producto, carrito, setCarrito}) => {
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    
+
+  
+
+     
+
 
   return ( 
     <>
@@ -14,18 +26,20 @@ const Card = ({producto}) => {
                 <div className="card-header p-0">
                     <img src={producto.thumbnail} alt={producto.title}  className="img-fluid" />
                 </div>
-                <div className="card-body text-center">
+                <div className="card-body text-center d-flex flex-column align-content-center justify-content-between">
                     <h5>{producto.title}</h5>
                     <p className="text-success">{producto.brand}</p>
                     <h5 className="text-danger">{producto.price.toFixed(0).toLocaleString()}$</h5>
+                    
+                   
                 </div>
                 <div className="card-footer text-center">
-
+                
                     <button className="btn btn-danger btn-sm mx-1"  onClick={handleShow}>Detalle</button>
                 </div>
             </div>
         </div>
-        <Detalle show={show} handleClose={handleClose} producto={producto}  />
+        <Detalle show={show} handleClose={handleClose} producto={producto} carrito={carrito} setCarrito={setCarrito}  />
     </>  
   )
 }

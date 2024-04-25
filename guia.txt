@@ -35,3 +35,88 @@
 8) modificar la barra de navegacion con todos los element de las paginas "Inicio, Tienda, Movil, Laptop, Categorias, Contactos"
         <Link to="/inicio" className="nav-link active" aria-current="page" href="/">Inicio</Link> agregando Link to="/" con la ruta a la paginas
 9) agregar un carrusel en el inicio
+
+
+
+Habilidades que dominarás al practicar con ejercicios de la etapa 1:
+
+1) Instalación y configuración:
+    Instalar y configurar React o Vite, 
+    herramientas esenciales para el desarrollo de aplicaciones React.
+2) Librerías CSS:
+    Implementar librerías CSS como Bootstrap o react-bootstrap 
+    para diseñar interfaces atractivas y responsivas.
+3) Rutas y navegación:
+    Crear y gestionar rutas de navegación con react-router-dom 
+    para estructurar tu aplicación y facilitar la navegación entre diferentes secciones.
+4) Componentes estáticos:
+    Diseñar y desarrollar componentes estáticos como 
+    Header, Footer y Carrusel para crear una base sólida para tu aplicación.
+5) Hooks de React:
+    Dominar los hooks useState y useEffect 
+    para manejar el estado y los efectos secundarios en tus componentes de forma eficiente.
+6) Consumo de APIs:
+    Conectarte a APIs externas 
+    como dummyjson.com, thecocktaildb.com, api.themoviedb.org y themealdb.com 
+    para obtener datos y enriquecer tu aplicación.
+7) Rutas dinámicas:
+    Implementar rutas dinámicas con useParams 
+    para mostrar contenido específico en función de la URL.
+8) Modales Bootstrap:
+    Crear y utilizar modales Bootstrap 
+    para mostrar información detallada o formularios de forma modal.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Habilidades que dominarás al practicar con ejercicios de la etapa 2
+Buscar los productos en el api creando una pagina con los resultados
+
+1) En el Header
+   el el Header.jsx
+   import { useNavigate} from 'react-router-dom'; 
+   
+   const [inputValue, setInputValue] = useState('');
+    const handleChange = (event) => {
+      setInputValue(event.target.value);
+    };
+
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      navigate('/busquedas', {
+        state: inputValue,
+      });	  
+    };
+
+2) En la app.jsx
+
+        <Route path='/busquedas' element={<Busquedas/>}/>
+
+        se agrega otra ruta para la nueva pagina busqueda.jsx
+
+3) en la pagina Busqueda.jsx
+    copiamos el contenido de Laptop.jsx
+    cambiamos el API por este
+    const API='https://dummyjson.com/products/search?q=';
+    import { useLocation } from 'react-router-dom';
+
+    agregamos
+    const location = useLocation();
+    const valueSearch = location.state;
+    adaptamos el get
+    const getDatos = async (valueSearch) =>{
+    try {
+        const URI=API+valueSearch;
+          const response = await fetch(URI);
+          const data = await response.json();
+          //console.log(data)
+          setDatos(data.products);
+        } catch (error) {
+          console.error(error)
+        }
+    };
+    useEffect(()=>{
+      getDatos(valueSearch);
+    },[valueSearch]);
+
+4) 

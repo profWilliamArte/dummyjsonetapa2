@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 const API='https://dummyjson.com/products/category/laptops';
 import Card from "../components/Card";
 
-const Laptop = () => {
+const Laptop = ({carrito, setCarrito}) => {
   const [datos, setDatos] = useState([])
     const getDatos = async () =>{
         try {
@@ -23,7 +23,7 @@ const Laptop = () => {
         <h1 className="text-center py-3">Laptops ({datos.length})</h1>
             <div className="row">
                 {datos && datos.map((productos)=>(
-                  <Card key={productos.id} producto={productos}/>
+                  <Card key={productos.id} producto={productos} carrito={carrito} setCarrito={setCarrito}/>
                 ))}
             </div>
         </div>

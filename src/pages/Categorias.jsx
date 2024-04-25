@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 const API='https://dummyjson.com/products/category/';
 
-const Categorias = () => {
+const Categorias = ({carrito, setCarrito}) => {
   const params = useParams()
   const [datos, setDatos] = useState([])
 
@@ -32,7 +32,7 @@ const Categorias = () => {
     <h1 className="text-center py-3">{params.id} ({datos.length})</h1>
         <div className="row">
             {datos && datos.map((productos)=>(
-              <Card key={productos.id} producto={productos}/>
+              <Card key={productos.id} producto={productos} carrito={carrito} setCarrito={setCarrito}/>
             ))}
         </div>
     </div>
