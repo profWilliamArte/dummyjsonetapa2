@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-const API='https://dummyjson.com/products/categories';
+const API='https://dummyjson.com/products/category-list';
 const ruta="/categorias/";
 const FiltroCategorias = () => {
     const [datos, setDatos] = useState([])
